@@ -7,7 +7,7 @@ import exercise.repository.PostRepository;
 import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
 
-public class PostsController {
+public final class PostsController {
 
     private static final int POSTS_ON_PAGE = 5;
     private static final int CURRENT_PAGE_NUMBER = 1;
@@ -32,7 +32,8 @@ public class PostsController {
                     return new NotFoundResponse("Entity with id = " + id + " not found");
                 });
         var postNumber = PostRepository.getEntities().indexOf(post) + 1;
-        var postsCurrentPageNumber = (postNumber % POSTS_ON_PAGE == 0) ? postNumber / POSTS_ON_PAGE : postNumber / POSTS_ON_PAGE + 1;
+        var postsCurrentPageNumber =
+                (postNumber % POSTS_ON_PAGE == 0) ? postNumber / POSTS_ON_PAGE : postNumber / POSTS_ON_PAGE + 1;
         var page = new PostPage(post, postsCurrentPageNumber);
         ctx.render("posts/show.jte", model("page", page));
     }

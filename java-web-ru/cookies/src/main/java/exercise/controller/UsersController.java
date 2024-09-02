@@ -1,7 +1,5 @@
 package exercise.controller;
 
-import io.javalin.validation.ValidationException;
-import org.apache.commons.lang3.StringUtils;
 import exercise.util.Security;
 import exercise.model.User;
 import exercise.util.NamedRoutes;
@@ -28,7 +26,7 @@ public class UsersController {
 
         var user = new User(firstName, lastName, email, password, token);
         UserRepository.save(user);
-        ctx.cookie("token" , token);
+        ctx.cookie("token", token);
         ctx.redirect(NamedRoutes.userPath(user.getId()));
     }
 

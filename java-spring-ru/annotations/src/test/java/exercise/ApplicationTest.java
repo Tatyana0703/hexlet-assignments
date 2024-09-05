@@ -6,9 +6,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 class ApplicationTest {
-    
+
     @Test
-    public void testInspect() {
+    void testInspect() {
         Application.main(null);
 
         final var expected1 = "Method getCity returns a value of type String";

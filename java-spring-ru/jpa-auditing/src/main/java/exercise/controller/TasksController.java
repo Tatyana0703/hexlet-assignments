@@ -59,6 +59,8 @@ public class TasksController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable long id) {
         taskRepository.findById(id).ifPresentOrElse(t -> taskRepository.deleteById(t.getId()),
-                () -> {throw new ResourceNotFoundException("Task with id " + id + " not found");});
+                () -> {
+                    throw new ResourceNotFoundException("Task with id " + id + " not found");
+                });
     }
 }

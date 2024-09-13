@@ -5,11 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.EntityListeners;
 import static jakarta.persistence.GenerationType.IDENTITY;
-
-import lombok.*;
-
 import java.time.LocalDate;
-
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import jakarta.persistence.GeneratedValue;

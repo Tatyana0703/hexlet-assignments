@@ -62,12 +62,11 @@ public class PostsController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable long id) {
         postRepository.findById(id).ifPresentOrElse(post -> {
-                    postRepository.deleteById(post.getId());
-                    commentRepository.deleteByPostId(post.getId());
-                },
-                () -> {
-                    throw new ResourceNotFoundException("Post with id " + id + " not found");
-                });
+            postRepository.deleteById(post.getId());
+            commentRepository.deleteByPostId(post.getId());
+        }, () -> {
+            throw new ResourceNotFoundException("Post with id " + id + " not found");
+        });
     }
 }
 // END

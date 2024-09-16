@@ -126,7 +126,7 @@ public class TasksControllerTest {
                 .create();
         taskRepository.save(task);
 
-        var result = mockMvc.perform(get("/tasks/" +  + task.getId()))
+        var result = mockMvc.perform(get("/tasks/" + task.getId()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -152,7 +152,7 @@ public class TasksControllerTest {
                 .create();
         taskRepository.save(task);
 
-        mockMvc.perform(delete("/tasks/" +  + task.getId()))
+        mockMvc.perform(delete("/tasks/" + task.getId()))
                 .andExpect(status().isOk());
 
         assertThat(taskRepository.findById(task.getId())).isEmpty();

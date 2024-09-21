@@ -3,8 +3,6 @@ package exercise.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 // BEGIN
 @Setter
 @Getter

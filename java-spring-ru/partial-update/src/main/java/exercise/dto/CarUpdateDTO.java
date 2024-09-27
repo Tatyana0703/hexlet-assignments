@@ -13,6 +13,7 @@ public class CarUpdateDTO {
 
     private JsonNullable<String> model;
 
+    @NotNull
     private JsonNullable<String> manufacturer;
 
     private JsonNullable<Integer> enginePower;

@@ -4,7 +4,6 @@ import java.util.List;
 
 import exercise.dto.*;
 import exercise.mapper.TaskMapper;
-import exercise.mapper.UserMapper;
 import exercise.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,8 +53,8 @@ public class TasksController {
     @PostMapping(path = "")
     @ResponseStatus(HttpStatus.CREATED)
     public TaskDTO create(@Valid @RequestBody TaskCreateDTO taskData) {
-        var user = userRepository.findById(taskData.getAssigneeId())
-                .orElseThrow(() -> new ResourceNotFoundException("User with id " + taskData.getAssigneeId() + " not found"));
+        var user = userRepository.findById(taskData.getAssigneeId()).orElseThrow(
+                () -> new ResourceNotFoundException("User with id " + taskData.getAssigneeId() + " not found"));
         var task = taskMapper.map(taskData);
         user.addTask(task);
         userRepository.save(user);
@@ -65,8 +64,8 @@ public class TasksController {
 
     @PutMapping(path = "/{id}")
     public TaskDTO update(@PathVariable long id, @Valid @RequestBody TaskUpdateDTO taskData) {
-        var newUser = userRepository.findById(taskData.getAssigneeId())
-                .orElseThrow(() -> new ResourceNotFoundException("User with id " + taskData.getAssigneeId() + " not found"));
+        var newUser = userRepository.findById(taskData.getAssigneeId()).orElseThrow(
+                () -> new ResourceNotFoundException("User with id " + taskData.getAssigneeId() + " not found"));
         var task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + " not found"));
         var oldUser = task.getAssignee();

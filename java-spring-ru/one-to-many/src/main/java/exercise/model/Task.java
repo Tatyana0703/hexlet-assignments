@@ -27,7 +27,7 @@ import java.time.LocalDate;
 @Setter
 @ToString(includeFieldNames = true, onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Task {
+public class Task implements BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @ToString.Include
@@ -38,7 +38,6 @@ public class Task {
     @ToString.Include
     private String title;
 
-    @NotBlank
     @ToString.Include
     private String description;
 
@@ -51,7 +50,7 @@ public class Task {
     // BEGIN
     // Связь ManyToOne
 //    @ManyToOne(fetch = FetchType.LAZY)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)  //по умолчанию FetchType.EAGER
     @JoinColumn(name = "assignee_id", nullable = false)
     private User assignee;
     // END

@@ -20,11 +20,15 @@ import org.mapstruct.ReportingPolicy;
 )
 public abstract class TaskMapper {
 
-    @Mapping(target = "assignee.id", source = "assigneeId")
+    //автоматически ищет и подставляет entity за счет ReferenceMapper
+    @Mapping(target = "assignee", source = "assigneeId")
     public abstract Task map(TaskCreateDTO dto);
+
+    //правильно работает при source = "assignee.id"
     @Mapping(source = "assignee.id", target = "assigneeId")
     public abstract TaskDTO map(Task model);
 
-    @Mapping(target = "assignee.id", source = "assigneeId")
+    //автоматически ищет и подставляет entity за счет ReferenceMapper
+    @Mapping(target = "assignee", source = "assigneeId")
     public abstract void update(TaskUpdateDTO dto, @MappingTarget Task model);
 }

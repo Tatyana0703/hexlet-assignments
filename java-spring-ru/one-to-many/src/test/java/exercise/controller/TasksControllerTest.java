@@ -1,6 +1,7 @@
 
 package exercise.controller;
 
+import exercise.dto.TaskUpdateDTO;
 import exercise.mapper.TaskMapper;
 import exercise.model.Task;
 import exercise.model.User;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.instancio.Instancio;
 
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -107,6 +109,7 @@ class TasksControllerTest {
                 v -> v.node("assigneeId").isEqualTo(testTask.getAssignee().getId())
         );
 
+        var q = taskRepository.findAllByNameContaining(testTask.getDescription().substring(0, 1));
     }
 
     @Test
@@ -146,10 +149,13 @@ class TasksControllerTest {
         assertThat(secondTask.getDescription()).isEqualTo(otherTestTask.getDescription());
         assertThat(secondTask.getAssignee().getId()).isEqualTo(otherTestTask.getAssignee().getId());
         assertThat(secondTask.getAssignee().getTasks()).hasSize(2);
+
+        //запрос вместо двунаправленной связи
+        var q = taskRepository.findAllByUser(secondTask.getAssignee());
     }
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testUpdateWithAllFields() throws Exception {
         taskRepository.save(testTask);
 
         var dto = mapper.map(testTask);
@@ -171,7 +177,7 @@ class TasksControllerTest {
         assertThat(task.getDescription()).isEqualTo(dto.getDescription());
         assertThat(task.getAssignee().getId()).isEqualTo(dto.getAssigneeId());
     }
-
+    
     @Test
     public void testDestroy() throws Exception {
         taskRepository.save(testTask);

@@ -5,6 +5,7 @@ import exercise.dto.TaskCreateDTO;
 import exercise.dto.TaskDTO;
 import exercise.dto.TaskUpdateDTO;
 import exercise.mapper.TaskMapper;
+import exercise.model.User;
 import exercise.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,15 +70,15 @@ public class TasksController {
         var task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + " not found"));
         var oldUser = task.getAssignee();
-
         oldUser.removeTask(task);
-        task.setTitle(taskData.getTitle());
-        task.setDescription(taskData.getDescription());
+
+        //автоматически ищет и подставляет entity за счет ReferenceMapper
+        taskMapper.update(taskData, task);
+
         newUser.addTask(task);
 
         userRepository.save(oldUser);
         userRepository.save(newUser);
-
         return taskMapper.map(task);
     }
 

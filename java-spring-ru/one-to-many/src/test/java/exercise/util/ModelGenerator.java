@@ -35,5 +35,6 @@ public class ModelGenerator {
                 .supply(Select.field(Task::getTitle), () -> faker.lorem().word())
                 .supply(Select.field(Task::getDescription), () -> faker.gameOfThrones().quote())
                 .toModel();
+
     }
 }

@@ -25,7 +25,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
-public class User {
+public class User implements BaseEntity {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -43,9 +43,9 @@ public class User {
 
     // BEGIN
 //    @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // По умолчанию пустой список помогает не проверять на null
-    // Выборка данных выполнится при обращении к getPosts()
+    @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //значение по умолчанию FetchType.LAZY
+    // По умолчанию пустой список помогает не проверять на null если fetch = FetchType.LAZY
+    // Выборка данных выполнится при обращении к getTasks()
     private List<Task> tasks = new ArrayList<>();
 
     public void addTask(Task task) {

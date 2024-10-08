@@ -26,6 +26,7 @@ public abstract class ProductMapper {
 
     //правильно работает при source = "category.id"
     @Mapping(source = "category.id", target = "categoryId")
+    @Mapping(source = "category.name", target = "categoryName")
     public abstract ProductDTO map(Product model);
 
     //автоматически ищет и подставляет entity за счет ReferenceMapper

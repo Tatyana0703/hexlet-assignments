@@ -1,6 +1,5 @@
 package exercise.specification;
 
-import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,8 @@ public class ProductSpecification {
     }
 
     private Specification<Product> withCategoryId(Long categoryId) {
-        return (root, query, cb) -> categoryId == null ? cb.conjunction() : cb.equal(root.get("category").get("id"), categoryId);
+        return (root, query, cb) -> categoryId == null ? cb.conjunction() :
+                cb.equal(root.get("category").get("id"), categoryId);
     }
 
     private Specification<Product> withPriceGt(Integer price) {

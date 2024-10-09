@@ -20,8 +20,8 @@ public class ProductSpecification {
     }
 
     private Specification<Product> withCategoryId(Long categoryId) {
-        return (root, query, cb) -> categoryId == null ? cb.conjunction() :
-                cb.equal(root.get("category").get("id"), categoryId);
+        return (root, query, cb) -> categoryId == null ? cb.conjunction()
+                : cb.equal(root.get("category").get("id"), categoryId);
     }
 
     private Specification<Product> withPriceGt(Integer price) {
@@ -37,8 +37,8 @@ public class ProductSpecification {
     }
 
     private Specification<Product> withTitleCont(String subTitle) {
-        return (root, query, cb) -> subTitle == null ? cb.conjunction() :
-                cb.like(cb.lower(root.get("title")), cb.lower(cb.literal(subTitle)));
+        return (root, query, cb) -> subTitle == null ? cb.conjunction()
+                : cb.like(cb.lower(root.get("title")), cb.lower(cb.literal(subTitle)));
     }
 }
 // END

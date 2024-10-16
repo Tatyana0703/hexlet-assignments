@@ -2,7 +2,6 @@ package exercise.mapper;
 
 import exercise.dto.*;
 import exercise.model.Author;
-import exercise.model.Book;
 import org.mapstruct.*;
 
 @Mapper(

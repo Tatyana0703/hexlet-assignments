@@ -5,7 +5,11 @@ import exercise.dto.AuthorCreateDTO;
 import exercise.dto.AuthorDTO;
 import exercise.dto.AuthorUpdateDTO;
 import exercise.model.Author;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(
         uses = {JsonNullableMapper.class, ReferenceMapper.class},

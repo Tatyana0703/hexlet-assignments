@@ -11,11 +11,11 @@ class SafetyList {
     private int[] arr;
     private int size = 0;
 
-    public SafetyList() {
+    SafetyList() {
         this.arr = new int[this.capacity];
     }
 
-    public SafetyList(int capacity) {
+    SafetyList(int capacity) {
         this.capacity = capacity;
         this.arr = new int[capacity];
     }
@@ -25,7 +25,9 @@ class SafetyList {
     }
 
     public int get(int index) {
-        if (index < 0 || index >= size) throw new IllegalArgumentException("Некорректное значение индекса: " + index);
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Некорректное значение индекса: " + index);
+        }
         return arr[index];
     }
 

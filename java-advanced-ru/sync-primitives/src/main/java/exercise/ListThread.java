@@ -16,7 +16,8 @@ public class ListThread extends Thread {
 
     @Override
     public void run() {
-        new Random().ints(0, 350).limit(ELEMENTS_COUNT).forEach(v -> {
+        new Random().ints(0, 350).limit(ELEMENTS_COUNT)
+                .forEach(v -> {
                     try {
                         Thread.sleep(1L);
                         resource.add(v);

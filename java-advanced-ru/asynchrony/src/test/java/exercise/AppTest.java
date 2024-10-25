@@ -44,8 +44,4 @@ class AppTest {
 
         assertThat(result.trim()).contains("NoSuchFileException");
     }
-
-    // BEGIN
-    
-    // END
 }

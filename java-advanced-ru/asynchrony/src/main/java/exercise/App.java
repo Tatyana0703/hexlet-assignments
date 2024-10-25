@@ -1,17 +1,12 @@
 package exercise;
 
 import exercise.exception.NoSuchFileException;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
-import java.util.Arrays;
-import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.io.File;
-import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
 
 class App {

@@ -1,0 +1,15 @@
+cd app
+gradle build
+проверить запуск jar файла
+java -jar simple-application.jar
+
+создать образ
+docker build -t simple-docker-example/simple-docker-image .
+
+просмотреть образы
+docker images
+
+запустить контейнер
+docker run -it -p 3000:8080 simple-docker-example/simple-docker-image
+
+Откройте браузер и загрузите страницу http://localhost:3000. Убедитесь, что все работает. Если все сделано верно, вы увидите приветствие

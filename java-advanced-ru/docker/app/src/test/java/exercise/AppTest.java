@@ -22,13 +22,13 @@ public class AppTest {
 //    @Autowired
 //    private TestRestTemplate restTemplate;
 
-    @Test
-    public void testRootPage() throws Exception {
+//    @Test
+//    public void testRootPage() throws Exception {
 //        String body = this.restTemplate.getForObject(
 //                "http://localhost:" + port + "/",
 //                String.class
 //        );
 //        assertThat(body).contains("Great! We start Spring Boot application in Docker");
-    }
+//    }
 }
 

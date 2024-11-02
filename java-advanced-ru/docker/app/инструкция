@@ -1,7 +1,7 @@
 cd app
 gradle build
 проверить запуск jar файла
-java -jar simple-application.jar
+java -jar build/libs/simple-application.jar
 
 создать образ
 docker build -t simple-docker-example/simple-docker-image .
